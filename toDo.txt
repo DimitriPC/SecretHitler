@@ -1,0 +1,7 @@
+1. CreteGame should generate a room code after submit
+    User should be able to go into waiting room by entering room code
+
+In joinGame, after entering room code, username input should appear
+
+In createGame, if creator participates in the game, username input should appear and be required for submit
+    if not, just proceed
