@@ -11,11 +11,9 @@ function JoinGame() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hello");
 
     setUsername(localUsername);
     setGameCode(localGameCode);
-    //setUsername(localUsername);
 
     navigate("/WaitingRoom");
   }

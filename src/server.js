@@ -14,8 +14,8 @@ let users = [];
 io.on("connection", (socket) => {
   console.log("A user connected:", socket.id);
 
-  socket.on("waiting", (id) => {
-    users.push(id);
+  socket.on("waiting", (username) => {
+    users.push(username);
     console.log(users);
     io.emit("waiting", users);
   })

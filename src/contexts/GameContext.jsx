@@ -5,9 +5,10 @@ const GameContext = createContext();
 export function GameProvider({children}) {
     const [username, setUsername] = useState("");
     const [gamecode, setGameCode] = useState("");
+    const [isHost, setIsHost] = useState(false);
 
     return (
-        <GameContext.Provider value={{username, setUsername, gamecode, setGameCode}}>
+        <GameContext.Provider value={{username, setUsername, gamecode, setGameCode, isHost, setIsHost}}>
             {children}
         </GameContext.Provider>
     )

@@ -1,11 +1,15 @@
+import './../App.css';
 import { useState, useEffect } from 'react';
 import { useSocket } from '../SocketContext';
-import './../App.css';
+import { useGame } from "../contexts/GameContext";
+
 
 
 function WaitingRoom() {
 
   const socket = useSocket();
+  const {username, gamecode} = useGame();
+
   const [users, setUsers] = useState([]);
 
 
@@ -14,7 +18,7 @@ function WaitingRoom() {
 
     
     socket.on("connect", () => {
-      socket.emit("waiting", socket.id);
+      socket.emit("waiting", username);
     });
 
     socket.on("waiting", (userList) => {
@@ -35,7 +39,7 @@ function WaitingRoom() {
       <br/>
       <ul>
         {users.map(user => (
-          <li key={user.id}>{user.username}</li>
+          <li key={user}>{user}</li>
         ))}
       </ul>
     </>
