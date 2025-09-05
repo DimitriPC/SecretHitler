@@ -9,7 +9,9 @@ In createGame, if creator participates in the game, username input should appear
 Next: users should only be able to join an existing room with code
         Client sends enter request to server
         Server checks if room already exists. Checks also # of players
-        Host has button to start game/assign roles in waiting room
+        Joining a game puts you in a server room
         Add empty space in "How many players are in the game" form to force a choice
 
-        
+
+        create room sends create message with room code to server
+        join room sends join message with room code to server

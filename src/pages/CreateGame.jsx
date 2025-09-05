@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./../App.css";
 import { useGame } from "../contexts/GameContext";
+import { useNavigate } from "react-router-dom";
+
 
 function CreateGame() {
   const [choice, setChoice] = useState();
@@ -11,6 +13,7 @@ function CreateGame() {
   const randomChars = Math.random.toString(36).substring(2, 7);
 
   const { setUsername, setGameCode, setIsHost } = useGame();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();

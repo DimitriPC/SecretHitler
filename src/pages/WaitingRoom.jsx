@@ -8,7 +8,7 @@ import { useGame } from "../contexts/GameContext";
 function WaitingRoom() {
 
   const socket = useSocket();
-  const {username, gamecode} = useGame();
+  const {username, gamecode, isHost} = useGame();
 
   const [users, setUsers] = useState([]);
 
@@ -18,10 +18,12 @@ function WaitingRoom() {
 
     
     socket.on("connect", () => {
+      isHost ? socket.emit("gamecode") : null;
       socket.emit("waiting", username);
+      
     });
 
-    socket.on("waiting", (userList) => {
+    socket.on("waiting", (userList) => { //devrait recevoir gamecode aussi
       setUsers(userList);
     })
     
@@ -37,11 +39,14 @@ function WaitingRoom() {
     <>
       <h2>Waiting room</h2>
       <br/>
+      <h3>Game Code: {gamecode}</h3>
       <ul>
         {users.map(user => (
           <li key={user}>{user}</li>
         ))}
       </ul>
+      <br/>
+      {isHost ? <button>Start game</button> : null }
     </>
   );
 }

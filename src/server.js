@@ -10,6 +10,7 @@ const io = new Server(httpServer, {
 });
 
 let users = [];
+let gamecodes = [];
 
 io.on("connection", (socket) => {
   console.log("A user connected:", socket.id);
@@ -18,6 +19,10 @@ io.on("connection", (socket) => {
     users.push(username);
     console.log(users);
     io.emit("waiting", users);
+  })
+
+  socket.on("gamecode", (gamecode) => {
+    gamecodes.push(gamecode);
   })
 
   socket.on("message", (msg) => {
